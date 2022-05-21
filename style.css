@@ -1,0 +1,16 @@
+/* Variables */
+:root {
+	--btn-bg-color: #573bfe;
+	--icon-color: #00c3f9;
+	--main-text-color: #9c9ca1;
+}
+:root.light {
+	--main-bg-color: #f7f8fa;
+	--card-bg-color: #ffffff;
+	--heading-color: #2c2d2e;
+}
+:root.dark {
+	--main-bg-color: #1f1d2b;
+	--card-bg-color: #252836;
+	--heading-color: #edecef;
+}
