@@ -41,3 +41,21 @@ closeMenuEl.addEventListener("click", () => {
 navEl.addEventListener("click", () => {
 	closeNav();
 });
+
+// add focus to search when clicked
+const searchEl = document.querySelector(".search");
+const searchInputEl = document.querySelector(".search > input");
+const searchIconEl = document.querySelector(".search-icon");
+
+searchEl.addEventListener("click", e => {
+	searchInputEl.focus();
+});
+searchInputEl.addEventListener("focus", () => {
+	searchEl.style.outline = "1px solid var(--btn-bg-color)";
+	searchIconEl.style.color = "var(--btn-bg-color)";
+});
+// when search input loses focus
+searchInputEl.addEventListener("blur", () => {
+	searchEl.style.outline = "none";
+	searchIconEl.style.color = "";
+});
