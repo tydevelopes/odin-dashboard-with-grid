@@ -131,10 +131,71 @@ body {
 	align-items: center;
 }
 
+/* Header styles */
 .header {
+	height: 15rem;
+	padding: 2rem;
+	font-size: 1.4rem;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr) repeat(3, 2fr) repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	align-items: center;
 }
+/* style search */
+.search {
+	background-color: var(--main-bg-color);
+	border-radius: 1rem;
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	align-items: center;
+	padding: 0.4rem 0.5rem;
+}
+.search > input {
+	border: none;
+	background-color: transparent;
+}
+/* position header contents */
+.open-menu {
+	grid-area: 1 / 1 / 2 / 2;
+}
+.search {
+	grid-area: 1 / 2 / 2 / 6;
+}
+.notification {
+	grid-area: 1 / 7 / 2 / 8;
+}
+.toggle-theme {
+	grid-area: 1 / 8 / 2 / 9;
+}
+.person-image {
+	grid-area: 2 / 1 / 4 / 3;
+	align-self: end;
+}
+.greeting {
+	grid-area: 2 / 3 / 3 / 4;
+	align-self: end;
+}
+.person {
+	grid-area: 3 / 3 / 4 / 6;
+}
+.add {
+	grid-area: 3 / 6 / 4 / 7;
+}
+.upload {
+	grid-area: 3 / 7 / 4 / 8;
+}
+.share {
+	grid-area: 3 / 8 / 4 / 9;
+}
+/* select all header children icons except the menu icon */
+.header > i:not(:first-child) {
+	justify-self: end;
+}
+/* Main styles */
 .main {
 }
+
+/* ANIMATIONS */
 /* Animation classes */
 .slide-in {
 	animation: slideIn 0.5s linear forwards;
