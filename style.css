@@ -79,7 +79,8 @@ body {
 	grid-template-rows: repeat(15, 2.5rem);
 	row-gap: 0.8rem;
 	padding: 2rem;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
+	font-weight: 400;
 	text-transform: capitalize;
 }
 /* positioning nav contents */
