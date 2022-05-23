@@ -54,6 +54,7 @@ body {
 
 .fa-solid {
 	color: var(--main-text-color);
+	width: 2rem;
 }
 
 /* stlye nav as a modal */
@@ -122,6 +123,13 @@ body {
 .privacy {
 	grid-area: 16 / 1 / 17 / 2;
 }
+/* Add spacing between icon and text */
+.nav-content > div {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: 2rem;
+	align-items: center;
+}
 
 .header {
 }
@@ -150,7 +158,7 @@ body {
 /* animate slide in */
 @keyframes slideIn {
 	0% {
-		left: -30rem;
+		left: -40rem;
 	}
 	100% {
 		left: 0;
@@ -162,7 +170,7 @@ body {
 		left: 0;
 	}
 	100% {
-		left: -30rem;
+		left: -40rem;
 	}
 }
 /* animate fade in */

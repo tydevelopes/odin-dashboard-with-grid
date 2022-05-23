@@ -16,6 +16,8 @@ const closeMenuEl = document.querySelector(".close-menu");
 openMenuEl.addEventListener("click", () => {
 	navEl.classList.add("show-nav", "fade-in");
 	navContentEl.classList.add("slide-in");
+	// Hide the scrollbar
+	document.body.style.overflow = "hidden";
 });
 
 // cllose nav with animation when close icon clicked
@@ -23,9 +25,12 @@ openMenuEl.addEventListener("click", () => {
 const closeNav = () => {
 	navContentEl.classList.add("slide-out");
 	navEl.classList.add("nav-bg-color", "fade-out");
+
 	setTimeout(() => {
 		navEl.classList.remove("show-nav", "nav-bg-color", "fade-in", "fade-out");
 		navContentEl.classList.remove("slide-in", "slide-out");
+		// Show the scrollbar
+		document.body.style.overflow = "";
 	}, 1001);
 };
 
