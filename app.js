@@ -5,3 +5,25 @@ toggleThemeEl.addEventListener("click", () => {
 	const newTheme = root.className === "dark" ? "light" : "dark";
 	root.className = newTheme;
 });
+
+// nav controllers
+const openMenuEl = document.querySelector(".open-menu");
+const navEl = document.querySelector(".nav");
+const navContentEl = document.querySelector(".nav-content");
+const closeMenuEl = document.querySelector(".close-menu");
+
+// open nav with animation when menu icon clicked
+openMenuEl.addEventListener("click", () => {
+	navEl.classList.add("show-nav", "fade-in");
+	navContentEl.classList.add("slide-in");
+});
+
+// cllose nav with animation when close icon clicked
+closeMenuEl.addEventListener("click", () => {
+	navContentEl.classList.add("slide-out");
+	navEl.classList.add("nav-bg-color", "fade-out");
+	setTimeout(() => {
+		navEl.classList.remove("show-nav", "nav-bg-color", "fade-in", "fade-out");
+		navContentEl.classList.remove("slide-in", "slide-out");
+	}, 1001);
+});
