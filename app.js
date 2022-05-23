@@ -19,11 +19,20 @@ openMenuEl.addEventListener("click", () => {
 });
 
 // cllose nav with animation when close icon clicked
-closeMenuEl.addEventListener("click", () => {
+// helper function
+const closeNav = () => {
 	navContentEl.classList.add("slide-out");
 	navEl.classList.add("nav-bg-color", "fade-out");
 	setTimeout(() => {
 		navEl.classList.remove("show-nav", "nav-bg-color", "fade-in", "fade-out");
 		navContentEl.classList.remove("slide-in", "slide-out");
 	}, 1001);
+};
+
+closeMenuEl.addEventListener("click", () => {
+	closeNav();
+});
+
+navEl.addEventListener("click", () => {
+	closeNav();
 });
