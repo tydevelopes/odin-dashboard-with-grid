@@ -59,3 +59,59 @@ searchInputEl.addEventListener("blur", () => {
 	searchEl.style.outline = "none";
 	searchIconEl.style.color = "";
 });
+
+// Navigation to scroll page to the bottom or top depending on direction of scroll
+
+// To reliably obtain the full document height, we should take the maximum of these properties:
+let scrollHeight = Math.max(
+	document.body.scrollHeight,
+	document.documentElement.scrollHeight,
+	document.body.offsetHeight,
+	document.documentElement.offsetHeight,
+	document.body.clientHeight,
+	document.documentElement.clientHeight
+);
+
+let oldScrollPosition = scrollY;
+let scrollDirection = null;
+
+const navigate = document.querySelector(".navigate");
+const navicateIcon = document.querySelector(".navigate-icon");
+
+navigate.addEventListener("click", () => {
+	if (scrollDirection === "down") {
+		// Scroll to bottom of page
+		scrollTo(0, scrollHeight);
+		return;
+	}
+	if (scrollDirection === "up") {
+		scrollTo(0, 0);
+		return;
+	}
+});
+
+window.addEventListener("scroll", () => {
+	console.log(scrollY);
+	if (scrollY > oldScrollPosition) {
+		oldScrollPosition = scrollY;
+		console.log("down");
+		scrollDirection = "down";
+		if (scrollY < 100 || scrollY > 1000) {
+			navigate.style.display = "";
+		} else {
+			navigate.style.display = "inline-grid";
+		}
+		navicateIcon.classList.replace("fa-arrow-up", "fa-arrow-down");
+	}
+	if (scrollY < oldScrollPosition) {
+		oldScrollPosition = scrollY;
+		console.log("up");
+		scrollDirection = "up";
+		if (scrollY > 1639 || scrollY < 639) {
+			navigate.style.display = "";
+		} else {
+			navigate.style.display = "inline-grid";
+		}
+		navicateIcon.classList.replace("fa-arrow-down", "fa-arrow-up");
+	}
+});

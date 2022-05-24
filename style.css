@@ -73,7 +73,7 @@ h2 {
 	transition: color 0.3s linear;
 }
 /* change icons but search icon, color when hovered */
-.fa-solid:not(.search-icon):hover {
+.fa-solid:not(.search-icon, .navigate-icon):hover {
 	color: var(--btn-bg-color);
 	cursor: pointer;
 }
@@ -316,6 +316,22 @@ p {
 }
 .trend-info {
 	grid-area: 2 / 2 / 3 / 4;
+}
+
+/* button to scroll to top or bottom of page */
+.navigate {
+	display: none;
+	padding: 1.2rem;
+	background-color: var(--btn-bg-color);
+	border-radius: 5rem;
+	position: fixed;
+	right: 2rem;
+	bottom: 2rem;
+	box-shadow: var(--card-shadow);
+}
+.navigate-icon {
+	color: white;
+	font-size: 2rem;
 }
 
 /* ANIMATIONS */
