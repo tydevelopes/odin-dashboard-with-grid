@@ -12,6 +12,7 @@
 	--main-text-color: #64748b;
 	--border-color: #f1f5f9;
 	--span-color: #334155;
+	--card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 :root.dark {
 	--main-bg-color: #0f172a;
@@ -20,6 +21,7 @@
 	--main-text-color: #94a3b8;
 	--border-color: #334155;
 	--span-color: #cbd5e1;
+	--card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 /* basic reset */
@@ -231,6 +233,7 @@ p {
 	border-radius: 0.8rem;
 	border-left: 8px solid var(--btn-bg-color);
 	font-size: 1.4rem;
+	box-shadow: var(--card-shadow);
 	display: grid;
 	grid-template-columns: 1fr repeat(3, max-content);
 	grid-template-rows: max-content 1fr max-content;
@@ -269,6 +272,7 @@ p {
 	border-radius: 0.8rem;
 	height: 30rem;
 	font-size: 1.2rem;
+	box-shadow: var(--card-shadow);
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, 1fr);
@@ -291,6 +295,7 @@ p {
 	padding: 2rem;
 	border-radius: 0.8rem;
 	font-size: 1.2rem;
+	box-shadow: var(--card-shadow);
 	display: grid;
 	gap: 2rem;
 }
