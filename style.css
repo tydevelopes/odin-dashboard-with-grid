@@ -10,12 +10,16 @@
 	--card-bg-color: #ffffff;
 	--heading-color: #0f172a;
 	--main-text-color: #64748b;
+	--border-color: #f1f5f9;
+	--span-color: #334155;
 }
 :root.dark {
 	--main-bg-color: #0f172a;
 	--card-bg-color: #1e293b;
 	--heading-color: #ffffff;
 	--main-text-color: #94a3b8;
+	--border-color: #334155;
+	--span-color: #cbd5e1;
 }
 
 /* basic reset */
@@ -38,11 +42,14 @@ body {
 h2 {
 	color: var(--heading-color);
 	margin-bottom: 2rem;
+	font-size: 1.8rem;
+	font-weight: 500;
 }
 .nav-content,
 .header,
-.card,
-.project-card {
+.announcements-card,
+.project-card,
+.trending-card {
 	background-color: var(--card-bg-color);
 }
 
@@ -61,6 +68,7 @@ h2 {
 	color: var(--main-text-color);
 	width: 2rem;
 	height: 2rem;
+	transition: color 0.3s linear;
 }
 /* change icons but search icon, color when hovered */
 .fa-solid:not(.search-icon):hover {
@@ -232,24 +240,77 @@ p {
 /* layout project card contents */
 .project-card-title {
 	grid-area: 1 / 1 / 2 / 2;
+	font-size: 1.6rem;
+	font-weight: 500;
+	color: var(--heading-color);
 }
 .project-card-info {
 	grid-area: 2 / 1 / 3 / 4;
 }
 .project-card > .like {
 	grid-area: 3 / 2 / 4 / 3;
-	display: grid;
-	place-items: center;
 }
 .project-card > .peek {
 	grid-area: 3 / 3 / 4 / 4;
-	display: grid;
-	place-items: center;
 }
 .project-card > .share {
 	grid-area: 3 / 4 / 4 / 5;
+}
+/* center all icons in their own container */
+.fa-solid {
 	display: grid;
 	place-items: center;
+}
+
+/* style announcements */
+.announcements-card {
+	padding: 2rem;
+	margin-bottom: 2rem;
+	border-radius: 0.8rem;
+	height: 30rem;
+	font-size: 1.2rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	gap: 2rem;
+}
+.announcement:not(:last-child) {
+	border-bottom: 1px solid var(--border-color);
+}
+.announcement {
+	display: grid;
+}
+.announcement > h4 {
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: var(--heading-color);
+}
+
+/* Style trending */
+.trending-card {
+	padding: 2rem;
+	border-radius: 0.8rem;
+	font-size: 1.2rem;
+	display: grid;
+	gap: 2rem;
+}
+.trend {
+	display: grid;
+	grid-template-columns: max-content 1fr 2fr;
+	grid-template-rows: 1fr 1fr;
+	column-gap: 2rem;
+	align-items: center;
+}
+.trend > .person-image {
+	grid-area: 1 / 1 / 3 / 2;
+}
+.trend-name {
+	grid-area: 1 / 2 / 2 / 3;
+	font-weight: 500;
+	color: var(--span-color);
+}
+.trend-info {
+	grid-area: 2 / 2 / 3 / 4;
 }
 
 /* ANIMATIONS */
