@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500&display=swap");
 
+/* App layout using mobile first approach */
+
 /* Variables */
 :root {
 	--btn-bg-color: #6366f1;
@@ -7,7 +9,7 @@
 }
 :root.light {
 	--main-bg-color: #e2e8f0;
-	--card-bg-color: #ffffff;
+	--card-bg-color: rgb(255, 255, 255);
 	--heading-color: #0f172a;
 	--main-text-color: #64748b;
 	--border-color: #f1f5f9;
@@ -226,8 +228,14 @@ h2 {
 p {
 	height: auto;
 }
+.projects {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+	grid-template-rows: max-content 1fr;
+	column-gap: 2rem;
+}
 .project-card {
-	height: 20rem;
+	min-height: 20rem;
 	padding: 2rem;
 	margin-bottom: 2rem;
 	border-radius: 0.8rem;
@@ -270,7 +278,7 @@ p {
 	padding: 2rem;
 	margin-bottom: 2rem;
 	border-radius: 0.8rem;
-	height: 30rem;
+	min-height: 30rem;
 	font-size: 1.2rem;
 	box-shadow: var(--card-shadow);
 	display: grid;
@@ -390,4 +398,8 @@ p {
 	100% {
 		background-color: rgba(0, 0, 0, 0);
 	}
+}
+
+/* styling for tablets */
+@media screen and (min-width: 7.68rem) {
 }

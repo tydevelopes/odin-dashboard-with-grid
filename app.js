@@ -84,6 +84,7 @@ navigate.addEventListener("click", () => {
 		scrollTo(0, scrollHeight);
 		return;
 	}
+	// Scroll to top of page
 	if (scrollDirection === "up") {
 		scrollTo(0, 0);
 		return;
@@ -91,10 +92,9 @@ navigate.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
-	console.log(scrollY);
+	// show down arrow if scrolling down
 	if (scrollY > oldScrollPosition) {
 		oldScrollPosition = scrollY;
-		console.log("down");
 		scrollDirection = "down";
 		if (scrollY < 100 || scrollY > 1000) {
 			navigate.style.display = "";
@@ -103,9 +103,9 @@ window.addEventListener("scroll", () => {
 		}
 		navicateIcon.classList.replace("fa-arrow-up", "fa-arrow-down");
 	}
+	// show up arrow if scrolling up
 	if (scrollY < oldScrollPosition) {
 		oldScrollPosition = scrollY;
-		console.log("up");
 		scrollDirection = "up";
 		if (scrollY > 1639 || scrollY < 639) {
 			navigate.style.display = "";
