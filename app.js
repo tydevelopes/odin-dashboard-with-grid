@@ -41,6 +41,10 @@ closeMenuEl.addEventListener("click", () => {
 navEl.addEventListener("click", () => {
 	closeNav();
 });
+// stop event bubbling
+navContentEl.addEventListener("click", e => {
+	e.stopPropagation();
+});
 
 // add focus to search when clicked
 const searchEl = document.querySelector(".search");

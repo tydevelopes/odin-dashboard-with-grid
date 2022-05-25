@@ -8,6 +8,7 @@
 	--icon-color: #00c3f9;
 }
 :root.light {
+	--body-color: #f1f5f9;
 	--main-bg-color: #e2e8f0;
 	--card-bg-color: rgb(255, 255, 255);
 	--heading-color: #0f172a;
@@ -17,6 +18,7 @@
 	--card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 :root.dark {
+	--body-color: #334155;
 	--main-bg-color: #0f172a;
 	--card-bg-color: #1e293b;
 	--heading-color: #ffffff;
@@ -37,9 +39,12 @@ html {
 }
 body {
 	font-family: "Roboto Flex", sans-serif;
+	background-color: var(--body-color);
 }
-
+/* 1632px is 17inches */
 .container {
+	max-width: 2592px;
+	margin: auto;
 	background-color: var(--main-bg-color);
 	color: var(--main-text-color);
 }
@@ -97,10 +102,10 @@ h2 {
 	position: relative;
 	left: -40rem;
 	width: 70%;
-	height: 100vh;
+	min-height: 100vh;
 	display: grid;
 	grid-template-columns: 5fr 1fr;
-	grid-template-rows: repeat(15, 2.5rem);
+	grid-template-rows: repeat(16, 2.5rem);
 	row-gap: 0.8rem;
 	padding: 2rem;
 	font-size: 1.6rem;
@@ -160,9 +165,10 @@ h2 {
 	padding: 2rem;
 	font-size: 1.4rem;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr) repeat(3, 2fr) repeat(3, 1fr);
+	grid-template-columns: max-content max-content repeat(3, 2fr) repeat(3, max-content);
 	grid-template-rows: repeat(3, 1fr);
 	align-items: center;
+	gap: 1rem 2rem;
 }
 /* style search */
 .search {
@@ -199,14 +205,15 @@ h2 {
 }
 .person-image {
 	grid-area: 2 / 1 / 4 / 3;
-	align-self: end;
+	align-self: center;
 }
 .greeting {
-	grid-area: 2 / 3 / 3 / 4;
+	grid-area: 2 / 3 / 3 / 5;
 	align-self: end;
 }
 .person {
 	grid-area: 3 / 3 / 4 / 6;
+	align-self: start;
 }
 .add {
 	grid-area: 3 / 6 / 4 / 7;
@@ -230,7 +237,7 @@ p {
 }
 /* .projects {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 	grid-template-rows: 1fr;
 	column-gap: 2rem;
 } */
@@ -304,6 +311,7 @@ p {
 	border-radius: 0.8rem;
 	font-size: 1.2rem;
 	box-shadow: var(--card-shadow);
+	min-height: 30rem;
 	display: grid;
 	gap: 2rem;
 }
@@ -366,7 +374,7 @@ p {
 /* animate slide in */
 @keyframes slideIn {
 	0% {
-		left: -40rem;
+		left: -80rem;
 	}
 	100% {
 		left: 0;
@@ -378,7 +386,7 @@ p {
 		left: 0;
 	}
 	100% {
-		left: -40rem;
+		left: -80rem;
 	}
 }
 /* animate fade in */
@@ -401,9 +409,101 @@ p {
 }
 
 /* styling for tablets */
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+	.container {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		grid-template-rows: 15rem 1fr;
+	}
 	.nav {
+		grid-area: 1 / 1 / 3 / 2;
 		position: initial;
+		display: inline-grid;
+		height: auto;
+	}
+	.nav-content {
+		left: 0;
+		width: 100%;
+	}
+	.nav-content > div {
 		display: block;
 	}
-} */
+	/* hide all text in nav */
+	.nav-content span,
+	.close-menu {
+		display: none;
+	}
+	.header {
+		grid-area: 1 / 2 / 2 / 3;
+	}
+	.main {
+		grid-area: 2 / 2 / 3 / 3;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 2fr 1fr;
+		column-gap: 2rem;
+	}
+	.projects {
+		grid-area: 1 / 1 / 2 / 3;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: max-content repeat(3, 1fr);
+		column-gap: 2rem;
+	}
+	.projects > .title {
+		grid-area: 1 / 1 / 2 / 3;
+	}
+	/* move menu icon onto nav */
+	.open-menu {
+		position: absolute;
+		left: 2.5rem;
+		top: 2rem;
+		display: inline-block;
+	}
+}
+
+/* styling for desktop */
+@media screen and (min-width: 1536px) {
+	.container {
+		grid-template-columns: 30rem 1fr;
+	}
+	/* show all text in nav */
+	.nav-content span {
+		display: initial;
+	}
+	/* Add spacing between icon and text */
+	.nav-content > div {
+		display: grid;
+		grid-template-columns: max-content auto;
+		gap: 2rem;
+		align-items: center;
+	}
+	/* remove menu icon */
+	.open-menu {
+		display: none;
+	}
+	.main {
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+	.projects {
+		grid-area: 1 / 1 / 3 / 2;
+		gap: 2rem;
+	}
+	.projects > .title {
+		margin: 0;
+	}
+	.project-card {
+		margin: 0;
+	}
+	.announcements {
+		grid-area: 1 / 2 / 2 / 3;
+		display: grid;
+		grid-template-rows: max-content 1fr;
+	}
+	.trending {
+		grid-area: 2 / 2 / 3 / 3;
+		display: grid;
+		grid-template-rows: max-content 1fr;
+	}
+}
