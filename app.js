@@ -1,9 +1,11 @@
 // toggle theme
 const toggleThemeEl = document.querySelector(".fa-circle-half-stroke");
+const root = document.documentElement;
+
 toggleThemeEl.addEventListener("click", () => {
-	const root = document.documentElement;
 	const newTheme = root.className === "dark" ? "light" : "dark";
 	root.className = newTheme;
+	localStorage.setItem("theme", newTheme);
 });
 
 // nav controllers
@@ -117,5 +119,15 @@ window.addEventListener("scroll", () => {
 			navigate.style.display = "inline-grid";
 		}
 		navicateIcon.classList.replace("fa-arrow-down", "fa-arrow-up");
+	}
+});
+
+// store user selected theme in localStorage
+window.addEventListener("DOMContentLoaded", () => {
+	const theme = localStorage.getItem("theme");
+	if (theme) {
+		root.className = theme;
+	} else {
+		root.className = "light";
 	}
 });
