@@ -95,7 +95,7 @@ h2 {
 }
 .nav-content {
 	position: relative;
-	left: -20rem;
+	left: -40rem;
 	width: 70%;
 	height: 100vh;
 	display: grid;
@@ -228,12 +228,12 @@ h2 {
 p {
 	height: auto;
 }
-.projects {
+/* .projects {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-	grid-template-rows: max-content 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	grid-template-rows: 1fr;
 	column-gap: 2rem;
-}
+} */
 .project-card {
 	min-height: 20rem;
 	padding: 2rem;
@@ -401,5 +401,9 @@ p {
 }
 
 /* styling for tablets */
-@media screen and (min-width: 7.68rem) {
-}
+/* @media screen and (min-width: 768px) {
+	.nav {
+		position: initial;
+		display: block;
+	}
+} */
