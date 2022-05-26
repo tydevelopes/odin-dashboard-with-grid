@@ -13,14 +13,20 @@ const openMenuEl = document.querySelector(".open-menu");
 const navEl = document.querySelector(".nav");
 const navContentEl = document.querySelector(".nav-content");
 const closeMenuEl = document.querySelector(".close-menu");
+const navLabelEls = document.querySelectorAll(".nav-content span");
+const allDivsInNav = document.querySelectorAll(".nav-content > div");
 
-// open nav with animation when menu icon clicked
-openMenuEl.addEventListener("click", () => {
+const openNav = () => {
 	navEl.classList.add("show-nav", "fade-in");
 	navContentEl.classList.add("slide-in");
 	// Hide the scrollbar
-	document.body.style.overflow = "hidden";
-});
+	setTimeout(() => {
+		document.body.style.overflow = "hidden";
+	}, 1001);
+};
+
+// open nav with animation when menu icon clicked
+openMenuEl.addEventListener("click", openNav);
 
 // cllose nav with animation when close icon clicked
 // helper function
@@ -36,13 +42,9 @@ const closeNav = () => {
 	}, 1001);
 };
 
-closeMenuEl.addEventListener("click", () => {
-	closeNav();
-});
+closeMenuEl.addEventListener("click", closeNav);
 
-navEl.addEventListener("click", () => {
-	closeNav();
-});
+navEl.addEventListener("click", closeNav);
 // stop event bubbling
 navContentEl.addEventListener("click", e => {
 	e.stopPropagation();
@@ -122,12 +124,71 @@ window.addEventListener("scroll", () => {
 	}
 });
 
+// handlers for tablets
+const openTabletNav = () => {
+	navEl.classList.add("show-tablet-nav");
+	// navContentEl.classList.add("slide-in");
+	navContentEl.classList.add("show-tablet-nav-content");
+	closeMenuEl.style.display = "initial";
+	navLabelEls.forEach(el => {
+		el.style.display = "initial";
+	});
+	allDivsInNav.forEach(el => {
+		el.classList.add("place-contents");
+	});
+	// Hide the scrollbar
+	document.body.style.overflow = "hidden";
+};
+const closeTabletNav = () => {
+	// navContentEl.classList.add("slide-out");
+	// navEl.classList.add("nav-bg-color", "fade-out");
+	navEl.classList.remove("show-tablet-nav");
+	navContentEl.classList.remove("show-tablet-nav-content");
+	closeMenuEl.style.display = "";
+	navLabelEls.forEach(el => {
+		el.style.display = "";
+	});
+	allDivsInNav.forEach(el => {
+		el.classList.remove("place-contents");
+	});
+	setTimeout(() => {
+		// navEl.classList.remove("show-nav", "nav-bg-color", "fade-in", "fade-out");
+		// navContentEl.classList.remove("slide-in", "slide-out");
+		// Show the scrollbar
+		document.body.style.overflow = "";
+	}, 1001);
+};
+
+// listen for when screen width is atleast 768px
+const tabletSizeQuery = matchMedia("(max-width:1536px) and (min-width:768px)");
+console.log(tabletSizeQuery); // WILL CHECK SCREEN SIZE ON PAGE LOAD
+
+const changeNavStyles = e => {
+	if (e.matches) {
+		openMenuEl.removeEventListener("click", openNav);
+		closeMenuEl.removeEventListener("click", closeNav);
+		navEl.removeEventListener("click", closeNav);
+
+		openMenuEl.addEventListener("click", openTabletNav);
+		closeMenuEl.addEventListener("click", closeTabletNav);
+		navEl.addEventListener("click", closeTabletNav);
+	} else {
+		openMenuEl.addEventListener("click", openNav);
+		closeMenuEl.addEventListener("click", closeNav);
+		navEl.addEventListener("click", closeNav);
+	}
+};
+tabletSizeQuery.addEventListener("change", changeNavStyles);
+
 // store user selected theme in localStorage
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
 	const theme = localStorage.getItem("theme");
 	if (theme) {
 		root.className = theme;
 	} else {
 		root.className = "light";
+	}
+	if (tabletSizeQuery.matches) {
+		changeNavStyles(tabletSizeQuery);
 	}
 });

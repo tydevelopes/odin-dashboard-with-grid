@@ -370,6 +370,9 @@ p {
 .hide-nav {
 	display: none;
 }
+.show {
+	display: initial;
+}
 
 /* animate slide in */
 @keyframes slideIn {
@@ -426,7 +429,7 @@ p {
 		width: 100%;
 	}
 	.nav-content > div {
-		display: block;
+		display: grid;
 	}
 	/* hide all text in nav */
 	.nav-content span,
@@ -459,6 +462,41 @@ p {
 		left: 2.5rem;
 		top: 2rem;
 		display: inline-block;
+	}
+	/* nav styles on tablet */
+	.show-tablet-nav {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 1);
+		display: block;
+		z-index: 20;
+	}
+	.show-tablet-nav-content {
+		position: relative;
+		/* left: -40rem; */
+		width: 50%;
+		min-height: 100vh;
+		display: grid;
+		grid-template-columns: 5fr 1fr;
+		grid-template-rows: repeat(16, 2.5rem);
+		row-gap: 0.8rem;
+		/* padding: 2rem;
+	font-size: 1.6rem;
+	font-weight: 400;
+	text-transform: capitalize; */
+	}
+	/* .nav-content span,
+	.close-menu {
+		display: none;
+	} */
+	.place-contents {
+		display: grid;
+		grid-template-columns: max-content auto;
+		gap: 2rem;
+		align-items: center;
 	}
 }
 
